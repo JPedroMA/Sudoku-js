@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Sudoku Input Grid</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="big-main">
+    <div class="gif">
+      <iframe class="giff" src="https://giphy.com/embed/0TtX2qqpxp3pIafzio" width="480" height="480" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/stickers/space-spaceday-nationalspaceday-0TtX2qqpxp3pIafzio">via GIPHY</a></p>
+    </div>
+    <div class="main">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <label for="size">
+        <h2 style="color: whitesmoke;">Digite o tamanho do grid (3-9): </h2>
+      </label>
+      <input style="width: 100px;" type="number" id="size" min="3" max="9" value="3">
+
+    </div>
+    <div style="width: 10px; height: 15px;"></div>
+    <button style="width: 250px; height: 50px;" onclick="createGrid()"><a class="codepen-button"><span>Criar
+          Grid</span></a></button>
+    <div style="width: 10px; height: 15px;"></div>
+    <div id="gridContainer" class="sudoku-grid">
+      <!-- Grid will be dynamically generated here -->
+    </div>
+
+    <button style="width: 250px; height: 50px;" onclick="fillEmptyCells()"><a class="codepen-button"><span>Encontrar
+          valores</span></a></button>
+
+    <div id="errorMessage" class="error-message"></div>
+    </div>
+    <div class="gif1">
+      <iframe class="giffs" src="https://giphy.com/embed/0TtX2qqpxp3pIafzio" width="480" height="480" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/stickers/space-spaceday-nationalspaceday-0TtX2qqpxp3pIafzio">via GIPHY</a></p>
+    </div>
+    <script>
+      function createGrid() {
+        var size = parseInt(document.getElementById('size').value);
+        var gridContainer = document.getElementById('gridContainer');
+        var errorMessage = document.getElementById('errorMessage');
+
+        // Clear previous grid and error message
+        gridContainer.innerHTML = '';
+        errorMessage.textContent = '';
+
+        // Create the Sudoku grid
+        gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+        gridContainer.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+        for (let i = 0; i < size * size; i++) {
+          var cell = document.createElement('div');
+          cell.classList.add('sudoku-cell');
+          var input = document.createElement('input');
+          input.type = 'number';
+          input.min = '1';
+          input.max = `${size}`;
+          cell.appendChild(input);
+          gridContainer.appendChild(cell);
+        }
+      }
+
+      function fillEmptyCells() {
+        var inputs = document.querySelectorAll('.sudoku-cell input');
+        var size = parseInt(document.getElementById('size').value);
+
+        // Create an array of numbers from 1 to size
+        var numbers = Array.from({ length: size }, (_, i) => i + 1);
+
+        // Shuffle the numbers array
+        shuffleArray(numbers);
+
+        // Counter for inputs without a value
+        var emptyCount = 0;
+
+        // Fill the grid with random numbers
+        inputs.forEach(input => {
+          if (input.value === '') {
+            input.value = numbers[emptyCount % size]; // Use modulo to repeat numbers in range
+            emptyCount++;
+          }
+        });
+
+        // Show error message if all cells are already filled
+        var emptyCellsExist = Array.from(inputs).some(input => input.value === '');
+        if (!emptyCellsExist) {
+          showErrorMessage('All cells are already filled.');
+        } else {
+          showErrorMessage('');
+        }
+      }
+
+      function showErrorMessage(message) {
+        var errorMessage = document.getElementById('errorMessage');
+        errorMessage.textContent = message;
+      }
+
+      // Function to shuffle an array
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+    </script>
+
+</body>
+
+</html>
