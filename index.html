@@ -15,28 +15,31 @@
       <span class="loader"></span>
     </div>
     <div class="main">
-    <div style="display: flex; flex-direction: column; align-items: center;">
-      <label for="size">
-        <h2 style="color: whitesmoke;">Digite o tamanho do grid (3-9): </h2>
-      </label>
-      <input style="width: 100px;" type="number" id="size" min="3" max="9" value="3">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <label for="size">
+          <h2 style="color: whitesmoke;">Digite o tamanho do grid (3-9): </h2>
+        </label>
+        <input style="width: 100px;" type="number" id="size" min="3" max="9" value="3">
 
-    </div>
-    <div style="width: 10px; height: 15px;"></div>
-    <button style="width: 250px; height: 50px;" onclick="createGrid()"><a class="codepen-button"><span>Criar
-          Grid</span></a></button>
-    <div style="width: 10px; height: 15px;"></div>
-    <div id="gridContainer" class="sudoku-grid">
-      <!-- Grid will be dynamically generated here -->
-    </div>
+      </div>
+      <div style="width: 10px; height: 15px;"></div>
+      <button style="width: 250px; height: 50px;" onclick="createGrid()"><a class="codepen-button"><span>Criar
+            Grid</span></a></button>
+      <div style="width: 10px; height: 15px;"></div>
+      <div id="gridContainer" class="sudoku-grid">
+        <!-- Grid will be dynamically generated here -->
+      </div>
 
-    <button style="width: 250px; height: 50px;" onclick="fillEmptyCells()"><a class="codepen-button"><span>Encontrar
-          valores</span></a></button>
+      <button style="width: 250px; height: 50px;" onclick="fillEmptyCells()"><a class="codepen-button"><span>Encontrar
+            valores</span></a></button>
 
-    <div id="errorMessage" class="error-message"></div>
+      <div id="errorMessage" class="error-message"></div>
+      <button style="width: 250px; height: 50px;"><a class="codepen-button" href="sudoku2.html"><span>2ª versão</span></a></button>
     </div>
     <div class="gif1">
-      <iframe class="giffs" src="https://giphy.com/embed/0TtX2qqpxp3pIafzio" width="480" height="480" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/stickers/space-spaceday-nationalspaceday-0TtX2qqpxp3pIafzio">via GIPHY</a></p>
+      <iframe class="giffs" src="https://giphy.com/embed/0TtX2qqpxp3pIafzio" width="480" height="480" style=""
+        frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      <p><a href="https://giphy.com/stickers/space-spaceday-nationalspaceday-0TtX2qqpxp3pIafzio">via GIPHY</a></p>
     </div>
     <script src="script.js"></script>
 
