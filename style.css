@@ -48,7 +48,7 @@ body {
   }
 
   .error-message {
-    color: red;
+    color: whitesmoke;
     margin-top: 10px;
   }body {
     font-family: Arial, sans-serif;
@@ -206,7 +206,7 @@ iframe:hover {
         left: 0; /* Start from the left */
     }
     100% {
-        left: 100%; /* Move to the right end of the container */
+        left: 99.4rem; /* Move to the right end of the container */
     }
 }
 
